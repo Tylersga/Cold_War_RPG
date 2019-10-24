@@ -18,7 +18,7 @@ class Russian:
 
 
 r1 = Russian("Dimitri", "Communist", "Heroic")
-r2 = Russian("Maria", "Communist", "honest")
+r2 = Russian("Linda", "Communist", "honest")
 
 
 # In[3]:
