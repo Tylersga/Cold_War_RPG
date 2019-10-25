@@ -93,4 +93,4 @@ def help_menu():
 def start_game():
     print('###  The game will start at a later date  ###')
 
-title_screen() #<---- literally the only command in quote en quote main function that is being run
+title_screen() #<---- literally the only command in the "main" function that is being run
