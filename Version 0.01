@@ -1,0 +1,135 @@
+
+import cmd
+import textwrap
+import sys
+import os
+import time
+import random
+
+screen_width = 100
+
+
+
+################### Characters and factions ########################
+
+
+class player:
+    def __init__(self):
+        self.name = ''
+        self.money = 1000
+        self.sanity = 0
+        self.location = 'home'
+mc = player()
+
+class Russian:
+    def __init__(self, n, f, p):
+        self.name = n
+        self.faction = f
+        self.personality = p
+    
+    def introduce_self(self):
+        print("My name is " + self.name)
+
+r1 = Russian("Dimitri", "Communist", "Heroic")
+r2 = Russian("Linda", "Communist", "honest")
+
+class American:
+    def introduce_self(self):
+        print("My name is " + self.name)
+        
+    def __init__(self, n, f, p, s):
+        self.name = n
+        self.faction = f
+        self.personality = p
+        self.is_spy = s
+        
+    def is_spy(self):
+        self.is_spy = True
+        
+    def is_not_spy(self):
+        self.is_spy = False
+
+
+a1 = American("John", "Capitalist", "rude", False)
+a2 = American("Gertrude", "Communist", "nice", True)
+
+################## Game loop ##################################
+##### I want to create some loop statements eventually when we got enough content and procedural code ########
+
+def wakeup_sequence():
+    os.system('cls')
+    print_slow("BEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEP")
+    print_slow("\nBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEP")
+    
+def first_day():
+    print_slow("")
+
+################## The title screen and menus #################
+
+def print_slow(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.05)
+
+def title_screen():
+    os.system('cls')
+    print('###############')
+    print('#   WElCOME   #')
+    print('###############')
+    print('     -Play-    ')
+    print('     -Help-    ')
+    print('     -Quit-    ')
+    title_screen_selections()
+
+def title_screen_selections():
+    option = input("> ")
+    if option.lower() == ("play"):
+        start_game()
+    elif  option.lower() == ("help"):
+        help_menu()
+    elif option.lower() == ("quit"):
+        sys.exit()
+    elif option.lower() == ("menu"):
+        title_screen()
+    else:
+        print("Please input a valid command")
+        title_screen_selections()
+
+def help_menu():
+    os.system('cls')
+    print('###########################')
+    print('#   This is a help menu   #')
+    print('###########################')
+    print('Type menu to return to menu')
+    title_screen_selections()
+
+def start_game():
+    os.system('cls')
+    print_slow("Hello, what's your name?\n")
+    player_name = input("> ")
+    player.name = player_name
+    print_slow("\nHello " + player_name)
+    print_slow("\nIt is currently October 16th 1962")
+    print_slow("\nIt has come to our attention that everything is fake news.")
+    print_slow("\nYou are now given full control of the media")
+    print_slow("\nWe have put our full trust in you. But I cannot stress this enough,\neverything you choose to do has the ability to\ndelay total destruction of our great nation.\n\nChoose wisely.")
+    print("\nPress enter to continue")
+    option = input("> ")
+    if option.lower() == (""):
+        wakeup_sequence()
+        first_day()
+
+def main():
+    title_screen()
+
+if __name__ == "__main__":
+    main()
+
+DESCRIPTION = 'description'
+EXAMINATION = 'examine'
+SOLVED = False
+HOME = 'go home'
+WORK = 'go to work'
+
+solved_events = {}
